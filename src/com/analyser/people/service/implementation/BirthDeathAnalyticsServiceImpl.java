@@ -5,7 +5,6 @@ import com.analyser.people.model.enums.VitalStatus;
 import com.analyser.people.service.interfaces.BirthDeathAnalyticsService;
 import com.analyser.people.utils.FileUtils;
 
-import javax.swing.plaf.synth.Region;
 import java.time.Year;
 import java.util.*;
 
@@ -24,8 +23,6 @@ public class BirthDeathAnalyticsServiceImpl implements BirthDeathAnalyticsServic
             uniqueRegions.add(birthDeathStatistic.region());
         }
         return uniqueRegions.stream().toList();
-//        System.out.println("Unique Regions:");
-//        uniqueRegions.forEach(System.out::println);
     }
 
     @Override
@@ -110,7 +107,6 @@ public class BirthDeathAnalyticsServiceImpl implements BirthDeathAnalyticsServic
     @Override
     public void getHighestRatePerRegion() {
         Map<String,Map<VitalStatus,BirthDeathStatistic>> regionalWiseOverallCount =new HashMap<>();
-        int count=0;
         for(BirthDeathStatistic birthDeathStatistic:birthDeathStatistics) {
             Map<VitalStatus,BirthDeathStatistic> regionWiseCount= regionalWiseOverallCount.getOrDefault(birthDeathStatistic.region(),new HashMap<>());
             BirthDeathStatistic birthDeathStatisticRecord=regionWiseCount.get(birthDeathStatistic.status());
